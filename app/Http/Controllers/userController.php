@@ -46,6 +46,9 @@ class userController extends Controller
     {
         $users = self::users();
         $user_id = array_search( $id, array_column( $users,'id') );
+        if(!$user_id){
+            abort(404);
+        }
         return view('users.show',['user'=> $users[$user_id]]);
     }
 
